@@ -14,28 +14,47 @@ public class MainGUI {
         // Create the frame
         JFrame frame = new JFrame("Library Management System");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        frame.setSize(500, 400);
 
-        // Create buttons
+        // Create buttons for member and book-related actions
         JButton showBooksButton = new JButton("Show Books");
         JButton showMembersButton = new JButton("Show Members");
         JButton addMemberButton = new JButton("Add Member");
+
+        // Create buttons for borrowing and returning books
         JButton borrowBookButton = new JButton("Borrow Book");
         JButton returnBookButton = new JButton("Return Book");
 
-        // Panel to hold buttons
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(5, 1));
+        // Styling buttons for aesthetics
+        showBooksButton.setBackground(Color.LIGHT_GRAY);
+        showMembersButton.setBackground(Color.LIGHT_GRAY);
+        addMemberButton.setBackground(Color.LIGHT_GRAY);
 
-        // Add buttons to panel
-        panel.add(showBooksButton);
-        panel.add(showMembersButton);
-        panel.add(addMemberButton);
-        panel.add(borrowBookButton);
-        panel.add(returnBookButton);
+        borrowBookButton.setBackground(Color.CYAN);
+        returnBookButton.setBackground(Color.CYAN);
 
-        // Add panel to frame
-        frame.add(panel);
+        // Create a panel for the show and add member buttons
+        JPanel memberPanel = new JPanel();
+        memberPanel.setLayout(new GridLayout(3, 1, 10, 10));
+        memberPanel.setBorder(BorderFactory.createTitledBorder("Library Options"));
+        memberPanel.add(showBooksButton);
+        memberPanel.add(showMembersButton);
+        memberPanel.add(addMemberButton);
+
+        // Create a panel for the borrow and return buttons at the bottom
+        JPanel actionPanel = new JPanel();
+        actionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        actionPanel.add(borrowBookButton);
+        actionPanel.add(returnBookButton);
+
+        // Create the main panel to hold the memberPanel and actionPanel
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout(10, 10));
+        mainPanel.add(memberPanel, BorderLayout.CENTER);
+        mainPanel.add(actionPanel, BorderLayout.SOUTH);
+
+        // Add main panel to the frame
+        frame.add(mainPanel);
         frame.setVisible(true);
 
         // Show books button event
